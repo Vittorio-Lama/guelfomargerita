@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Eventi</h1>
+    <nav>
+        <ul>
+          <li><a href="index.html">Guelfo Margherita</a></li>
+          <li><a href="libri.html">Libri</a></li>
+          <li><a href="video.html#didattica">Didattica Esperienziale</a></li>
+          <li><a href="video.html">Video</a></li>
+          <li><a href="video.html#film">Film</a></li>
+          <li><a href="articoli.html">Leading Aticles</a></li>
+          <li><a href="eventi.html">Eventi</a></li>
+          <li><a href="brainstoarming.html">Brainstoarming</a></li>
+          <li><a href="foglivolanti.html">Fogli Volanti</a></li>
+        </ul>
+      </nav>
+  </header>
+
+  <main>
+    <section>
+      <p>Questa sezione del sito non è ancora disponibile.</p>
+    </section>
+  </main>
+
+  <footer id="footer-placeholder"></footer>
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
+
+  <script src="script.js"></script>
+</body>
+</html>
