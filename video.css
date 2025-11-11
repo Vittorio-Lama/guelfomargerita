@@ -1,0 +1,449 @@
+/* Contenitore principale */
+.video-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* CARD CANALE cliccabili */
+.channel-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
+  margin-top: 32;
+}
+.channel-card:hover {
+  background-color: #f0f0f0;
+}
+
+.channel-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.channel-info {
+  flex: 1;
+}
+
+.channel-info h3,
+.channel-info h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #333;
+}
+
+.channel-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* GRIGLIA VIDEO */
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.video-card {
+  flex: 1 1 400px;
+}
+
+.video-card iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+}
+
+.video-card p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #444;
+}
+
+.video-horizontal {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.video-horizontal img {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.video-horizontal .video-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.video-horizontal iframe {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.video-index {
+  position: fixed;
+  top: 180px;
+  right: 20px;
+  width: 180px;
+  background: #f8f8f8;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: sans-serif;
+  z-index: 1000;
+}
+
+.video-index h3 {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.video-index ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.video-index ul li {
+  margin-bottom: 8px;
+}
+
+.video-index ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 8px;
+}
+
+.video-index ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Nascondi l’indice su schermi piccoli */
+@media (max-width: 900px) {
+  .video-index {
+    display: none;
+  }
+}
+
+/* ==== BLOCCO FILM (Dadapolis) ==== */
+.film-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+.film-card:hover {
+  transform: scale(1.02);
+}
+.film-poster {
+  width: 100%;
+  max-width: 280px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+.film-info {
+  text-align: center;
+  color: #333;
+}
+.film-info h3 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+.film-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background-color: #444;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.film-button:hover {
+  background-color: #222;
+}
+
+/* ===== Sub–nav video: come la .channel-card ===== */
+.video-section .video-subnav{
+  list-style: none;
+  margin: 1rem 0 2rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.video-section .video-subnav li{ min-width: 0; }
+
+/* Stesso look&feel della .channel-card */
+.video-section .video-subnav a{
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
+  color: #222;                           /* testo nero come la card */
+  background: #fff;                      /* bianco come la channel-card */
+  border-radius: 12px;                   /* stesso raggio */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);/* stessa ombra */
+  padding: 12px 16px;                    /* respiro simile */
+  font-weight: bold;
+  line-height: 1.25;
+  transition: background-color .2s ease,
+              box-shadow .2s ease,
+              transform .06s ease;
+  border: 0;                              /* niente bordo visibile */
+}
+
+/* Hover identico alla channel-card */
+.video-section .video-subnav a:hover{
+  background-color: rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Press feedback */
+.video-section .video-subnav a:active{
+  transform: translateY(1px);
+}
+
+/* Focus coerente con il sito */
+.video-section .video-subnav a:focus-visible{
+  outline: 3px solid #0077cc;           /* come nav a.active */
+  outline-offset: 3px;
+}
+
+/* Freccia finale sobria (come “azione”) */
+.video-section .video-subnav a::after{
+  content: "›";
+  margin-left: auto;
+  opacity: .6;
+  transition: transform .1s ease, opacity .2s ease;
+}
+.video-section .video-subnav a:hover::after{
+  transform: translateX(2px);
+  opacity: .9;
+}
+
+/* Spazio se arrivano subito sotto la channel-card */
+.video-section .channel-card + .video-subnav{
+  margin-top: 1.25rem;
+}
+
+/* Riduci animazioni se richiesto */
+@media (prefers-reduced-motion: reduce){
+  .video-section .video-subnav a,
+  .video-section .video-subnav a::after{
+    transition: none;
+  }
+}
+/* ====== Ultimissime dalla rete: sezione video locali ====== */
+
+.ultime-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
+}
+
+.ultime-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5rem;
+}
+
+.ultime-intro {
+  margin-bottom: 1.8rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* Layout: UNA colonna, video grandi e centrati */
+.ultime-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center; /* centra le card */
+}
+
+.ultime-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.10);
+  padding: 1.4rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
+  width: 100%;
+  max-width: 960px; /* qui decidi quanto “grande” diventa il video */
+}
+
+.ultime-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #222;
+}
+
+.ultime-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.ultime-card video {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 0.4rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  background: #000;
+}
+
+/* Su schermi molto piccoli limiamo solo un filo i padding */
+@media (max-width: 600px) {
+  .ultime-section {
+    margin-top: 24px;
+    padding: 0 14px 32px;
+  }
+
+  .ultime-card {
+    padding: 1.1rem 1.1rem 1.3rem;
+  }
+}
+
+/* ====== Locandine & Materiali – card preview ====== */
+
+.locandine-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
+}
+
+.locandine-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.locandine-section p {
+  margin-top: 0.4rem;
+  margin-bottom: 1.6rem;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Griglia card-bottoni */
+.locandine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+
+/* Singola card locandina: è un <a>, stile tipo bottone "ricco" */
+.locandina-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  padding: 0.9rem 1rem 0.9rem;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+
+  text-decoration: none;
+  color: #222;
+  cursor: pointer;
+
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    border-color 0.16s ease,
+    background-color 0.16s ease;
+}
+
+/* micro–preview / etichetta tipo "PDF" "IMG" */
+.locandina-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  border-radius: 999px;
+  background: #f3f5ff;
+  color: #4353b5;
+}
+
+.locandina-card h3 {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.locandina-card p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Call to action stile bottone testuale */
+.locandina-cta {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1b4fb8;
+}
+
+/* Hover/focus: effetto "bottone" evidente */
+.locandina-card:hover,
+.locandina-card:focus-visible {
+  transform: translateY(-1px);
+  background-color: #f8f9ff;
+  border-color: #c9d4ff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.10);
+  outline: none;
+}
+
+.locandina-card:hover .locandina-cta,
+.locandina-card:focus-visible .locandina-cta {
+  text-decoration: underline;
+}
+
+/* Mobile: un filo più ariose ma sempre leggibili */
+@media (max-width: 600px) {
+  .locandine-section {
+    padding: 0 14px 32px;
+    margin-top: 24px;
+  }
+
+  .locandina-card {
+    padding: 0.85rem 0.9rem 0.9rem;
+  }
+}

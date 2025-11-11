@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guelfo Marghetita | Video</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="video.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Didattioca Esperienziale</h1>
+    <div id="nav-placeholder"></div>
+  </header>
+
+  <main class="video-section">
+
+  <!-- ====== channel card ====== -->
+    <section>
+      <a class="channel-card" href="https://www.youtube.com/@thecomplexmultilayersetgue6966" target="_blank" rel="noopener">
+        <img class="channel-logo" src="Immagini/guelfoyoutubelogo.jpg" alt="Logo Guelfo Margherita" />
+        <div class="channel-info">
+          <h3>Guelfo Margherita</h3>
+          <p>Esplora video, playlist e riflessioni sul pensiero complesso, la psicoanalisi e l’educazione.</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- Didattica esperienziale -->
+    <section>
+      <h2 id="didattica">Didattica esperienziale</h2>
+
+
+      <h3>Lezione Caserta</h3>
+      <div class="video-grid">
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/_MwzEAXT-lE" allowfullscreen></iframe>
+          <p>Lezione Caserta – Video 1</p>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/f4VaMK4o5fo" allowfullscreen></iframe>
+          <p>Lezione Caserta – Video 2</p>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/MtvJPD42nRQ" allowfullscreen></iframe>
+          <p>Lezione Caserta – Video 3</p>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/Uh0mLj5VV-o" allowfullscreen></iframe>
+          <p>Lezione Caserta – Video 4</p>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/KVQ0kHTCCXU" allowfullscreen></iframe>
+          <p>Lezione Caserta – Video 5</p>
+        </div>
+      </div>
+
+      
+      <div class="video-grid">
+        <div class="video-card">
+              <iframe src="https://www.youtube.com/embed/KrX86Viswv4" allowfullscreen></iframe>
+              <p>Metapsicologia del caos e sistemi dinamici complessi, istituto italiano di studi filosofici 2009, Spezzone Incontro Capri</p>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/I7AdGIekW4I" allowfullscreen></iframe>
+          
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/Ug4CADt14xw" allowfullscreen></iframe>
+          
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/YLpiSJGOGEg" allowfullscreen></iframe>
+          
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/cdvux-uQpVM" allowfullscreen></iframe>
+         
+        </div>
+        
+    </section>
+
+  </main>
+
+  <footer id="footer-placeholder"></footer>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

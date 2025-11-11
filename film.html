@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guelfo Marghetita | Film</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="video.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Film</h1>
+    <div id="nav-placeholder"></div>
+  </header>
+  <!-- ====== film ====== -->
+   <main>
+    <section id="film">
+      <div class="video-grid">
+
+        <!--BLOCCO FILM  -->
+        <div class="film-card">
+           <h3>
+            Guelfo ha inoltre interpretato la parte dello psicoanalista nel film di Nina di majo Autunno edito dalla Sacher film di Nanni Moretti nel 1999
+           </h3>
+          <img src="Immagini/autunno-84-1383737073.jpg" alt="Locandina Dadapolis" class="film-poster">
+          <div class="film-info">
+            <h3> Autunno (1999)</h3>
+            <p>
+              Regia di nina di majo
+              Genere Commedia – Italia, 1999 – durata 95 minuti.   
+            </p>
+            <a href="https://www.mymovies.it/film/1999/autunno/" target="_blank" class="film-button">Scopri di più</a>
+            <a href="https://share.google/mHdBksVKwUuQDisH2" target="_blank" class="film-button">Wikipedia</a>
+          </div>
+        </div>
+
+
+        <!-- NUOVO BLOCCO FILM DADAPOLIS -->
+        <div class="film-card">
+           <h3>egli ha inoltre recitato e commentato nel film Dadapolis(2024) </h3>
+          <img src="Immagini/dadapolis.locandina.jpg" alt="Locandina Dadapolis" class="film-poster">
+          <div class="film-info">
+            <h3>Dadapolis (2024)</h3>
+            <p>
+              Regia di Carlo Luglio, Fabio Gargano.  
+              Con Viviana Cangiano, Cristina Donadio, Peppe Lanzetta, Lino Musella, Dario Sansone.  
+              Genere: Documentario – Italia, 2024 – Durata: 72 minuti.  
+              Distribuzione: Europictures.  
+              Uscita cinema: 2 dicembre 2024.  
+            </p>
+            <a href="https://www.mymovies.it/film/2024/dadapolis-caleidoscopio-napoletano/" target="_blank" class="film-button">Scopri di più</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+  </main>
+
+  <footer id="footer-placeholder"></footer>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

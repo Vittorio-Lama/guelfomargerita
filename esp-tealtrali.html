@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guelfo Marghetita | Esperienze Teatrali</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="video.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Esperienze Teatrali</h1>
+    <div id="nav-placeholder"></div>
+  </header>
+  <!-- ====== teatro ====== -->
+   <main>
+    <section>
+    <div class="video-grid">
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=lfJir0w8UAk" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/lfJir0w8UAk/hqdefault.jpg" alt="Beiond Babel" style="width:100%; border-radius: 8px;">
+          <p>lA Memoir of the Future_Reading Proof and Enactment</p>
+        </a>
+      </div>
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=1QAJdo_Z0TQ" target="_blank" rel="noopener">
+          <img src="https://img.youtube.com/vi/1QAJdo_Z0TQ/hqdefault.jpg" alt="A memory of the future past" style="width:100%; border-radius: 8px;">
+          <p>Beiond Babel</p>
+        </a>
+      </div>
+    </div>
+    </section>
+  </main>
+
+  <footer id="footer-placeholder"></footer>
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

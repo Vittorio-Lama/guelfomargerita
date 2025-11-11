@@ -1,0 +1,199 @@
+/* Libri */
+#libri { padding: 2rem; }
+
+.libri-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Card base (stato chiuso) */
+.scheda-libro {
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: calc(33.333% - 1rem);
+  overflow: hidden;
+  position: relative;
+  transition: transform .3s ease, box-shadow .3s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+.scheda-libro:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.12);
+}
+
+/* Copertina */
+.scheda-libro img {
+  display: block;
+  height: 400px;
+  width: 100%;
+  object-fit: contain;
+  background: #fff;
+}
+
+/* Pulsanti base (visibili solo a card aperta) */
+.bottone-acquisto,
+.bottone2,
+.bottone3 {
+  background: #fff;
+  padding: 1rem;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Link dei pulsanti */
+.bottone-acquisto a,
+.bottone2 a,
+.bottone3 a {
+  display: inline-block;
+  padding: .5rem 1rem;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color .25s ease;
+}
+
+/* Colori pulsanti */
+.bottone-acquisto a { background: #0077cc; }
+.bottone-acquisto a:hover { background: #005fa3; }
+.bottone2 a,
+.bottone3 a { background: #cc7e00; }
+.bottone2 a:hover,
+.bottone3 a:hover { background: #b36e00; }
+
+/* Info base nascosta sempre (evita riapparizioni) */
+.info-base { display: none !important; }
+
+/* Pannello testo per lo stato CHIUSO: overlay scorrevole ma di altezza fissa */
+.info-hover {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 370px;
+  background: rgba(255,255,255,.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+  overflow-y: auto;
+  padding: 1rem;
+  z-index: 3;
+}
+.scheda-libro:hover .info-hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+.info-hover h3 { font-size: 16px; margin: 0 0 4px; }
+.info-hover h4 { font-size: 16px; font-weight: 700; margin: 8px 0; }
+.info-hover p  { font-size: 13px; margin: 5px 0; }
+.info-hover em { font-style: italic; font-weight: 700; }
+.info-hover::-webkit-scrollbar { width: 6px; }
+.info-hover::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+/* ——— Stato APERTO (expanded) ——— */
+.scheda-libro.expanded {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: minmax(260px, 40%) 1fr auto auto auto; /* 3 colonne per i bottoni */
+  gap: clamp(16px, 3vw, 28px);
+  align-items: stretch;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+  padding: clamp(12px, 1.6vw, 20px);
+  transform: none;
+}
+
+/* Copertina in colonna 1, sempre piena e visibile */
+.scheda-libro.expanded > img {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Pannello testuale a destra: visibile, scorrevole, con altezza massima */
+.scheda-libro.expanded .info-hover {
+  position: static !important;
+  display: block !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: transparent !important;
+  padding: 0 !important;
+  grid-column: 2 / 6;  /* occupa il testo fino alla fine della riga bottoni */
+  grid-row: 1;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Bottoni in riga inferiore: 3 colonne dedicate */
+.scheda-libro.expanded .bottone-acquisto,
+.scheda-libro.expanded .bottone2,
+.scheda-libro.expanded .bottone3 {
+  display: block !important;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  grid-row: 2;
+  text-align: center;
+}
+
+.scheda-libro.expanded .bottone-acquisto { grid-column: 2; }
+.scheda-libro.expanded .bottone2         { grid-column: 3; }
+.scheda-libro.expanded .bottone3         { grid-column: 4; }
+
+.scheda-libro.expanded .bottone-acquisto a,
+.scheda-libro.expanded .bottone2 a,
+.scheda-libro.expanded .bottone3 a {
+  margin: 1rem .4rem 0 .4rem;
+}
+
+/* Stato chiuso: mostra solo copertina, nascondi testo e bottoni */
+.libri-container .scheda-libro:not(.expanded) .info-hover,
+.libri-container .scheda-libro:not(.expanded) .bottone-acquisto,
+.libri-container .scheda-libro:not(.expanded) .bottone2,
+.libri-container .scheda-libro:not(.expanded) .bottone3 {
+  display: none !important;
+}
+
+/* Responsive griglia card (stato chiuso) */
+@media (max-width: 1000px) { .scheda-libro { width: calc(50% - 1rem); } }
+@media (max-width: 600px)  { .scheda-libro { width: 100%; } }
+
+/* Responsive stato APERTO: impila tutto in colonna */
+@media (max-width: 860px) {
+  .scheda-libro.expanded { grid-template-columns: 1fr !important; }
+
+  .scheda-libro.expanded > img {
+    grid-column: 1; grid-row: 1;
+    width: 100%; height: auto; aspect-ratio: 2/3; object-fit: cover;
+  }
+
+  .scheda-libro.expanded .info-hover {
+    grid-column: 1; grid-row: 2;
+    margin-top: .5rem; max-height: none;
+  }
+
+  /* Bottoni in colonna, senza sovrapposizioni */
+  .scheda-libro.expanded .bottone-acquisto,
+  .scheda-libro.expanded .bottone2,
+  .scheda-libro.expanded .bottone3 {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    margin: .5rem 0 0 0 !important;
+    padding: 0 !important;
+  }
+
+  .scheda-libro.expanded .bottone-acquisto a,
+  .scheda-libro.expanded .bottone2 a,
+  .scheda-libro.expanded .bottone3 a {
+    display: block !important;
+    width: 90% !important;
+    margin: .5rem auto 0 auto !important;
+  }
+}

@@ -1,0 +1,212 @@
+.articles-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.articles-section h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.articles-section .intro {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 30px;
+}
+
+.articles-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* ✅ Responsive: 3 card su desktop, 2 su tablet, 1 su mobile */
+.article-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: calc(33.333% - 20px);
+}
+
+@media (max-width: 899px) {
+  .article-card {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 599px) {
+  .article-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+.article-card:hover {
+  transform: scale(1.02);
+}
+
+/* ✅ Altezza immagine fissa per tutte le card */
+.article-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ✅ Per la prima card mostra più parte superiore */
+.article-card.main-card img {
+  object-position: center top;
+}
+
+/* ✅ Titolo sempre allineato */
+.article-card h3 {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding: 10px;
+  margin: 0;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+}
+
+.article-content {
+  display: none;
+  padding: 15px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/*2*/
+
+/* ✅ Responsive: 3 card su desktop, 2 su tablet, 1 su mobile */
+.article-card2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  flex: 1 1 calc(33.333% - 20px);
+  max-width: calc(33.333% - 20px);
+}
+
+@media (max-width: 899px) {
+  .article-card2 {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 599px) {
+  .article-card2 {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+.article-card2:hover {
+  transform: scale(1.02);
+}
+
+/* ✅ Altezza immagine fissa per tutte le card */
+.article-card2 img {
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ✅ Per la prima card mostra più parte superiore */
+.article-card2.main-card img {
+  object-position: center top;
+}
+
+/* ✅ Titolo sempre allineato */
+.article-card2 h3 {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  padding: 10px;
+  margin: 0;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+}
+
+
+/* ✅ L'articolo espanso */
+.article-card.expanded {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 900px;
+  height: 90%;
+  overflow-y: auto;
+  z-index: 9999;
+  background: white;
+}
+
+/* ✅ Nasconde solo l'immagine di copertina */
+.article-card.expanded > img {
+  display: none;
+}
+
+.article-card.expanded h3 {
+  background: white;
+  font-size: 1.3rem;
+}
+
+.article-card.expanded .article-content {
+  display: block;
+}
+
+/* ✅ Immagini dentro l'articolo */
+.article-image {
+  display: block;
+  max-width: 90%;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 8px;
+}
+
+/* ✅ Sezione con più immagini */
+.article-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.article-images img {
+  flex: 1 1 calc(50% - 15px);
+  max-width: 45%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* ✅ Responsive: immagini una sotto l'altra su schermi piccoli */
+@media (max-width: 600px) {
+  .article-images {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .article-images img {
+    max-width: 90%;
+  }
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chi? - Foresta</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="foresta.css" />
+</head>
+<body>
+  <header style="padding: 1rem;">
+    <button onclick="history.back()" style="padding: 0.5rem 1rem; font-size: 1.2rem; background-color: #4e7031; color: white; border: none; border-radius: 8px; cursor: pointer;">
+       Torna Indietro
+    </button>
+    <button onclick="window.location.href='index.html'" style="padding: 0.5rem 1rem; font-size: 1.2rem; background-color: #315e70; color: white; border: none; border-radius: 8px; cursor: pointer;">
+       Home
+    </button>
+    <b>pagina in allestimento</b>
+    
+  </header>
+
+  <main>
+    <div class="foresta" id="foresta"></div>
+  </main>
+
+  <footer id="footer-placeholder"></footer>
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
+
+  <script src="foresta.js"></script>
+</body>
+</html>

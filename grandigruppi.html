@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guelfo Margherita | Grandi gruppi residenziali</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="video.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Grandi gruppi residenziali</h1>
+    <div id="nav-placeholder"></div>
+  </header>
+
+  <main class="locandine-section">
+    <h2>Grandi gruppi residenziali</h2>
+
+    <p>
+      Grandi gruppi residenziali sono dei setting in cui corpi, individui e
+      gruppalità possono incrociarsi e frammentarsi all’infinito; oppure
+      concentrarsi in singolarità sovrasistemiche per darsi un’anima comune,
+      una lingua o una città mentale condivisa, un punto di vista unitario.
+    </p>
+
+    <div class="locandine-grid">
+
+      <!-- riusa file reali che hai indicato -->
+      <a
+        href="locandine/DOC-20241010-WA0027..pdf"
+        target="_blank"
+        class="locandina-card"
+      >
+        <div class="locandina-label">PDF</div>
+        <h3>Presentazione IIPG</h3>
+        <p>
+          Materiale sull’intervento dedicato ai grandi gruppi residenziali
+          in collaborazione con IIPG.
+        </p>
+        <span class="locandina-cta">Apri locandina</span>
+      </a>
+
+      <a
+        href="locandine/DOC-20241010-WA0027..pdf"
+        target="_blank"
+        class="locandina-card"
+      >
+        <div class="locandina-label">PDF</div>
+        <h3>Università Benevento</h3>
+        <p>
+          Incontro universitario sui dispositivi gruppali e le dinamiche
+          istituzionali.
+        </p>
+        <span class="locandina-cta">Apri locandina</span>
+      </a>
+
+      <a
+        href="locandine/GIORNATA CAPRESE (1).pdf"
+        target="_blank"
+        class="locandina-card"
+      >
+        <div class="locandina-label">PDF</div>
+        <h3>Giornata Caprese</h3>
+        <p>
+          Programma della giornata di lavoro e riflessione in assetto residenziale.
+        </p>
+        <span class="locandina-cta">Apri locandina</span>
+      </a>
+
+      <a
+        href="locandine/BRO ITA ultima.pdf"
+        target="_blank"
+        class="locandina-card"
+      >
+        <div class="locandina-label">PDF</div>
+        <h3>Ischia</h3>
+        <p>
+          Brochure dell’esperienza residenziale a Ischia tra clinica, paesaggio e gruppi.
+        </p>
+        <span class="locandina-cta">Apri locandina</span>
+      </a>
+
+      <a
+        href="locandine/WEB- Brochure-Guelfo-Margherita14nov (1).jpg"
+        target="_blank"
+        class="locandina-card"
+      >
+        <div class="locandina-label">IMG</div>
+        <h3>Happening culturale</h3>
+        <p>
+          Locandina in formato immagine per l’happening culturale del 14 novembre.
+        </p>
+        <span class="locandina-cta">Apri locandina</span>
+      </a>
+
+    </div>
+  </main>
+
+  <footer id="footer-placeholder"></footer>
+
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+
+    fetch('nav.html')
+      .then(res => res.text())
+      .then(html => {
+        const nav = document.getElementById('nav-placeholder');
+        if (nav) nav.innerHTML = html;
+      });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guelfo Margherita | Locandine e materiali</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="video.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Tempo Futuro</h1>
+    <div id="nav-placeholder"></div>
+  </header>
+
+  <main class="locandine-section">
+    <h2>Prossimi appuntamenti (locandine e materiali)</h2>
+
+    <div class="locandine-grid">
+
+      <!-- Card locandina 1 -->
+      <a
+        href="locandine/dEF_2locandina_libro_margherita (3).pdf"
+        target="_blank"
+        class="locandina-card"
+      >
+        <div class="locandina-label">PDF</div>
+        <h3>Presentazione IIPG</h3>
+        <p>
+          Locandina della presentazione del libro con IIPG. Informazioni su luogo,
+          orari e ospiti.
+        </p>
+        <span class="locandina-cta">Apri locandina</span>
+      </a>
+
+    </div>
+  </main>
+
+  <footer id="footer-placeholder"></footer>
+
+  <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+
+    fetch('nav.html')
+      .then(res => res.text())
+      .then(html => {
+        const nav = document.getElementById('nav-placeholder');
+        if (nav) nav.innerHTML = html;
+      });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

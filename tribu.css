@@ -1,0 +1,65 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.villaggio {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff0d6;
+  overflow: hidden;
+}
+
+.casa {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: sienna;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: bold;
+  z-index: 2;
+  user-select: none;
+}
+
+.albero {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  background-color: #2e8b57;
+  border-radius: 25px 25px 0 0;
+  border: 2px solid #14532d;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#strade {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#strade path {
+  stroke: #5c4033; /* marrone fango */
+  stroke-width: 12;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.2));
+}
+
+.persona {
+  width: 20px;
+  height: 20px;
+  background-color: orange;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1; /* SOTTO gli alberi */
+  transition: top 3s linear, left 3s linear;
+}
