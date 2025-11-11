@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guelfo Margherita | Locandine e materiali</title>
+  <title>Guelfo Margherita | Ultimissime dalla rete</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="video.css" />
 </head>
@@ -14,7 +14,8 @@
     <div id="nav-placeholder"></div>
   </header>
 
-  <main class="locandine-section">
+  
+<main class="locandine-section">
     <h2>Prossimi appuntamenti (locandine e materiali)</h2>
 
     <div class="locandine-grid">
@@ -35,7 +36,7 @@
       </a>
 
     </div>
-  </main>
+</main>
 
   <footer id="footer-placeholder"></footer>
 
@@ -45,14 +46,8 @@
       .then(data => {
         document.getElementById('footer-placeholder').innerHTML = data;
       });
-
-    fetch('nav.html')
-      .then(res => res.text())
-      .then(html => {
-        const nav = document.getElementById('nav-placeholder');
-        if (nav) nav.innerHTML = html;
-      });
   </script>
   <script src="script.js"></script>
 </body>
 </html>
+
