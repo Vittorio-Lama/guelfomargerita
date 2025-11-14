@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- HOME -->
+  <url>
+    <loc>https://guelfomargherita.com/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- GRUPPO 1: Libri / Articoli / Esperienze Teatrali / Film -->
+  <url>
+    <loc>https://guelfomargherita.com/libri.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/articoli.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/esp-tealtrali.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/film.html</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- GRUPPO 2: Video / Conferenze / Presentazioni / Brainstorming / Grandi Gruppi / Didattica -->
+  <url>
+    <loc>https://guelfomargherita.com/video.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/video-conferenze.html</loc>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/libri.html#presentazionelibri</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/brainstorming.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/grandigruppi.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/didattica-esperienziale.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- GRUPPO 3: Carte / Tempo Presente / Tempo Futuro -->
+  <url>
+    <loc>https://guelfomargherita.com/index.html#lecarteindice</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/tempopresente.html</loc>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/tempofuturo.html</loc>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- ALTRE PAGINE (quelle del sito originale) -->
+  <url>
+    <loc>https://guelfomargherita.com/chi.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/chi-foresta.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/chi-tribu.html</loc>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://guelfomargherita.com/foglivolanti.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
