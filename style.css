@@ -12,11 +12,61 @@ body {
 /* Footer */
 footer {
   background-color: #333;
-  color: white;
+  color: #f9f9f9;
   font-size: 0.9rem;
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 1.25rem 1rem 1.5rem;
   text-align: center;
+}
+
+/* link nel footer: niente blu, aspetto pulito */
+footer a.footer-link {
+  color: #f9f9f9;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+footer a.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* riga “sito gestito da…” */
+footer .footer-managed {
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+/* area legale / privacy */
+footer .footer-legal {
+  margin-top: 0.75rem;
+}
+
+/* bottone Privacy Policy */
+footer .footer-btn-legal {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(249,249,249,0.8);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  color: #f9f9f9;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* hover carino ma sobrio */
+footer .footer-btn-legal:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #ffffff;
+}
+
+/* forziamo anche lo stile del link iubenda interno */
+footer .iubenda-embed {
+  background: transparent !important;
+  color: #f9f9f9 !important;
 }
 
 /* Header */
