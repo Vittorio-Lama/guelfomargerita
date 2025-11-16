@@ -35,7 +35,7 @@
     "name": "Grandi gruppi residenziali",
     "author": "Guelfo Margherita",
     "description": "Ricerche, pratiche e materiali sui grandi gruppi residenziali.",
-    "url": "https://guelfomargherita.com/grandi-gruppi.html"
+    "url": "https://guelfomargherita.com/grandigruppi.html"
   }
   </script>
 
@@ -146,21 +146,6 @@
   </main>
 
   <footer id="footer-placeholder"></footer>
-
-  <script>
-    fetch('footer.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      });
-
-    fetch('nav.html')
-      .then(res => res.text())
-      .then(html => {
-        const nav = document.getElementById('nav-placeholder');
-        if (nav) nav.innerHTML = html;
-      });
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
