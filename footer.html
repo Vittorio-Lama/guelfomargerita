@@ -15,22 +15,44 @@
 </p>
 
 <div class="footer-legal">
+  <!-- Privacy Policy -->
   <a href="https://www.iubenda.com/privacy-policy/45830204"
      class="footer-btn-legal iubenda-noiframe iubenda-embed"
      title="Privacy Policy">
     Privacy Policy
   </a>
+
+  <!-- Cookie Policy (ora corretta!) -->
+  <a href="https://www.iubenda.com/privacy-policy/45830204/cookie-policy"
+     class="footer-btn-legal iubenda-noiframe iubenda-embed"
+     title="Cookie Policy">
+    Cookie Policy
+  </a>
+
+  <!-- Termini e Condizioni (opzionali) -->
+  <!--
+  <a href="https://www.iubenda.com/terms-and-conditions/YYYYYYYY"
+     class="footer-btn-legal iubenda-noiframe iubenda-embed"
+     title="Termini e Condizioni">
+    Termini e Condizioni
+  </a>
+  -->
 </div>
 
 <script>
   (function (w,d) {
     var loader = function () {
-      var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0];
-      s.src="https://cdn.iubenda.com/iubenda.js";
-      tag.parentNode.insertBefore(s,tag);
+      var s = d.createElement("script"),
+          tag = d.getElementsByTagName("script")[0];
+      s.src = "https://cdn.iubenda.com/iubenda.js";
+      tag.parentNode.insertBefore(s, tag);
     };
-    if(w.addEventListener){w.addEventListener("load", loader, false);}
-    else if(w.attachEvent){w.attachEvent("onload", loader);}
-    else{w.onload = loader;}
+    if (w.addEventListener) {
+      w.addEventListener("load", loader, false);
+    } else if (w.attachEvent) {
+      w.attachEvent("onload", loader);
+    } else {
+      w.onload = loader;
+    }
   })(window, document);
 </script>
