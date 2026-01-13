@@ -767,7 +767,7 @@ header{ position: relative; overflow: visible; }
 .mega-nav .top-level > li:nth-child(2).open > .submenu{
   left: 50% !important;
   right: auto !important;
-  transform: translateX(-50%) !important;
+  transform: translateX(-40%) !important;
   max-width: calc(100vw - (var(--submenu-retract) * 2)) !important;
 }
 
