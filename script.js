@@ -180,3 +180,57 @@ document.addEventListener('DOMContentLoaded', function () {
   // Highlight iniziale (se ci fosse una nav già inline)
   highlightActiveLink();
 });
+
+function initChiTabs() {
+  const roots = document.querySelectorAll('[data-chi-tabs]');
+  if (!roots.length) return;
+
+  roots.forEach(root => {
+    const tabs = Array.from(root.querySelectorAll('[data-chi-tab]'));
+    const panels = Array.from(root.querySelectorAll('[data-chi-panel]'));
+    if (!tabs.length || !panels.length) return;
+
+    function activate(name) {
+      tabs.forEach(t => {
+        const isOn = t.dataset.chiTab === name;
+        t.classList.toggle('is-active', isOn);
+        t.setAttribute('aria-selected', String(isOn));
+        t.tabIndex = isOn ? 0 : -1;
+      });
+
+      panels.forEach(p => {
+        const isOn = p.dataset.chiPanel === name;
+        p.classList.toggle('is-active', isOn);
+        if (isOn) p.removeAttribute('hidden');
+        else p.setAttribute('hidden', '');
+      });
+    }
+
+    // Click
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => activate(btn.dataset.chiTab));
+    });
+
+    // Tastiera (frecce sx/dx)
+    root.addEventListener('keydown', (e) => {
+      const activeIndex = tabs.findIndex(t => t.classList.contains('is-active'));
+      if (activeIndex < 0) return;
+
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const dir = e.key === 'ArrowRight' ? 1 : -1;
+        const next = (activeIndex + dir + tabs.length) % tabs.length;
+        tabs[next].focus();
+        activate(tabs[next].dataset.chiTab);
+      }
+    });
+
+    // Default: primo tab attivo
+    activate(tabs[0].dataset.chiTab);
+  });
+}
+
+// Avvio: aggancialo al tuo DOMContentLoaded esistente
+document.addEventListener('DOMContentLoaded', () => {
+  initChiTabs();
+});
