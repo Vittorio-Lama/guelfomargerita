@@ -790,30 +790,33 @@ header{ position: relative; overflow: visible; }
 /* (opzionale) un filo più aria verticale tra bottoni del pannello */
 .mega-nav .submenu ul{ gap: 16px 12px; }
 .mega-nav .submenu a{ padding: 12px 18px; }
-
+/* =========================
+   CSS "CHI" COMPLETO (sostituisci il tuo blocco attuale)
+   Versione: card più grandi + split “insieme unico” (no card interne)
+   ========================= */
 
 /* =========================
-   FRECCE ORIZZONTALI (GLOBALI)
+   FRECCE ORIZZONTALI (ATTO) - FULL WIDTH
    ========================= */
 
 .chi-arrows-top{
-  position:relative;
-  width:100%;
-  height:50px;
-  margin:20px 0;
-  color:#000;
+  position: relative;
+  width: 100%;
+  height: 56px;
+  margin: 34px 0 14px;
+  color: #000;
 }
 
 .chi-arrows-top .h{
   position:absolute;
-  left:0;
-  right:0;
-  height:2px;
-  background:currentColor;
+  left: 90px;
+  right: 90px;
+  height: 2px;
+  background: currentColor;
 }
 
-.chi-arrows-top .h.right{ top:10px; }
-.chi-arrows-top .h.left{  top:26px; }
+.chi-arrows-top .h.right{ top: 18px; }
+.chi-arrows-top .h.left{  top: 34px; }
 
 /* punte */
 .chi-arrows-top .h.right::after{
@@ -838,22 +841,22 @@ header{ position: relative; overflow: visible; }
 }
 
 /* =========================
-   WRAP CARD + FRECCE VERTICALI
+   WRAP CARD + FRECCE VERTICALI (POTENZA)
    ========================= */
 
 .chi-wrap{
-  position:relative;
-  max-width:1100px;
-  margin:20px auto;
+  position: relative;
+  max-width: 1400px;
+  margin: 26px auto;
 }
 
-/* frecce verticali (racchiudono le card) */
+/* frecce verticali */
 .chi-arrows{
   position:absolute;
-  left:0;
-  top:0;
-  bottom:0;
-  width:60px;
+  left: 14px;
+  top: 0;
+  bottom: 0;
+  width: 90px;
   color:#000;
   pointer-events:none;
 }
@@ -862,12 +865,12 @@ header{ position: relative; overflow: visible; }
   position:absolute;
   width:2px;
   background:currentColor;
-  top:20px;
-  bottom:20px;
+  top: 24px;
+  bottom: 24px;
 }
 
-.chi-arrows .v.up{   left:10px; }
-.chi-arrows .v.down{ left:22px; }
+.chi-arrows .v.up{   left: 28px; }
+.chi-arrows .v.down{ left: 48px; }
 
 /* punte verticali */
 .chi-arrows .v.up::before{
@@ -892,91 +895,183 @@ header{ position: relative; overflow: visible; }
 }
 
 /* =========================
-   CARD
+   LABEL vicino alle frecce
+   ========================= */
+.chi-arrow-label{
+  position:absolute;
+  font-weight: 900;
+  font-size: 12px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  background: #fff;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.12);
+}
+
+/* ATTO vicino alle frecce orizzontali */
+.chi-arrows-top .chi-label-atto{
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* POTENZA attaccata alle verticali */
+.chi-arrows .chi-label-potenza{
+  top: 10px;
+  left: -4px;
+  transform: rotate(-90deg);
+  transform-origin: left top;
+}
+
+/* =========================
+   LAYOUT + SCROLL ORIZZONTALE (card più larghe)
    ========================= */
 
 .chi-layout{
-  padding-left:60px;
-  box-sizing:border-box;
+  padding-left: 110px; /* più distanza dalle frecce */
+  box-sizing: border-box;
+}
+
+.chi-scroller{
+  overflow-x: auto;
+  overflow-y: visible;
+  padding: 8px 6px 14px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
 .chi-cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  display: flex;
+  gap: 26px;
+  align-items: stretch;
+  width: max-content;
 }
 
+/* =========================
+   CARD PRINCIPALI (PIU GRANDI)
+   ========================= */
+
 .chi-card{
+  flex: 0 0 auto;
+  width: min(94vw, 680px);     /* <-- più grande */
+  scroll-snap-align: start;
+
   background:#fff;
   border:1px solid rgba(0,0,0,0.08);
-  border-radius:10px;
+  border-radius:14px;
   min-height:260px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.05);
-  padding:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+  padding:18px;               /* <-- più respiro */
+}
+
+/* immagini dentro card */
+.chi-card img{
+  display:block;
+  width:100%;
+  max-width:100%;
+  height:200px;               /* <-- più grande */
+  object-fit:contain;
+  border-radius:12px;
+  margin-top:12px;
+}
+
+/* =========================
+   SPLIT AFFIANCATI (NO BOTTONI)
+   - non sono “card interne”
+   - è un unico blocco con 2 aree colorate
+   ========================= */
+
+.chi-split{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;                     /* <-- niente stacco */
+  margin: 14px 0 10px;
+  align-items: stretch;
+
+  border-radius: 14px;
+  overflow: hidden;           /* arrotonda entrambe le metà */
+}
+
+/* le due metà NON sono card */
+.chi-pane{
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 14px 14px 16px;
+  margin: 0;
+
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* titolo dentro le metà */
+.chi-pane-title{
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  opacity: .9;
+}
+
+/* immagini dentro lo split */
+.chi-pane img{
+  height: 150px;
+  margin-top: 10px;
+  border-radius: 10px;
+
+}
+
+/* colori delle due metà */
+.chi-pane--sotterranea{ background: rgba(255, 90, 90, .35); }
+.chi-pane--aerea{       background: rgba(255, 120, 120, .25); }
+.chi-pane--sesso{       background: rgba(255, 90, 90, .35); }
+.chi-pane--guerra{      background: rgba(255, 120, 120, .25); }
+
+/* linea centrale sottile (biforcazione) */
+.chi-split > .chi-pane + .chi-pane{
+  border-left: 1px solid rgba(0,0,0,0.08);
+}
+
+/* =========================
+   BOX ROSA (sezione tribù)
+   ========================= */
+
+.chi-box-pink{
+  background: rgba(255, 90, 90, .14);
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 14px;
+}
+
+/* =========================
+   DISATTIVA COMPLETAMENTE I TAB VECCHI
+   ========================= */
+.chi-tabs,
+.chi-tabbar,
+.chi-tab,
+.chi-panel{
+  display:none !important;
 }
 
 /* =========================
    RESPONSIVE
    ========================= */
-
-@media (max-width:900px){
-  .chi-cards{ grid-template-columns:repeat(2,1fr); }
-}
-
-@media (max-width:600px){
+@media (max-width:700px){
+  .chi-layout{ padding-left: 0; }
   .chi-arrows,
   .chi-arrows-top{ display:none; }
-  .chi-layout{ padding-left:0; }
-  .chi-cards{ grid-template-columns:1fr; }
+
+  .chi-card{ width: 92vw; }
+
+  /* lo split resta “unico blocco” ma in colonna */
+  .chi-split{
+    grid-template-columns: 1fr;
+  }
+  .chi-split > .chi-pane + .chi-pane{
+    border-left: 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
 }
-
-/* immagini dentro le card: la card resta fissa, si ridimensiona l'immagine */
-.chi-card img{
-  display:block;
-  width:100%;
-  max-width:100%;
-  height:160px;          /* cambia questa altezza se la vuoi più/meno grande */
-  object-fit:contain;    /* non taglia: entra tutta nell'area */
-  border-radius:8px;
-  margin-top:10px;
-}
-
-/* ====== CHI tabs (Foresta split) ====== */
-.chi-tabs { margin: 10px 0 6px; }
-
-.chi-tabbar{
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin: 10px 0 14px;
-}
-
-.chi-tab{
-  flex: 1 1 0;
-  border: 1px solid rgba(0,0,0,.18);
-  background: #fff;
-  color: #222;
-  padding: 10px 12px;
-  border-radius: 999px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .08s ease, background-color .15s ease, border-color .15s ease;
-}
-
-.chi-tab:hover{ background: rgba(0,0,0,.04); }
-.chi-tab:active{ transform: translateY(1px); }
-
-.chi-tab.is-active{
-  background: #111;
-  color: #fff;
-  border-color: #111;
-}
-
-.chi-tab:focus-visible{
-  outline: 3px solid #0077cc;
-  outline-offset: 3px;
-}
-
-/* Pannelli */
-.chi-panel{ margin-top: 6px; }
-.chi-panel[hidden]{ display: none !important; }
