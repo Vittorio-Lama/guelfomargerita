@@ -234,3 +234,41 @@ function initChiTabs() {
 document.addEventListener('DOMContentLoaded', () => {
   initChiTabs();
 });
+
+/* =========================
+   CHI — Multi-select expand (toggle)
+   ========================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll("#chi-completo .chi-card");
+
+  cards.forEach((card) => {
+    // accessibilità base
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-expanded", "false");
+
+    const toggle = () => {
+      const isOn = card.classList.toggle("is-selected");
+      card.setAttribute("aria-expanded", isOn ? "true" : "false");
+
+      // porta la card in vista quando si espande (senza bloccare)
+      if (isOn) {
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+
+    card.addEventListener("click", (e) => {
+      // se clicchi link o elementi interattivi, non togglare
+      const t = e.target;
+      if (t && (t.closest("a") || t.closest("button") || t.closest("input") || t.closest("textarea") || t.closest("select"))) return;
+      toggle();
+    });
+
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+});

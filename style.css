@@ -791,11 +791,11 @@ header{ position: relative; overflow: visible; }
 .mega-nav .submenu ul{ gap: 16px 12px; }
 .mega-nav .submenu a{ padding: 12px 18px; }
 
-
 /* =========================
    CSS "CHI" COMPLETO
+   - 4 card sulla stessa riga (desktop)
+   - frecce verticali si fermano PRIMA del div conclusione
    - ATTO + POTENZA uguali e centrati SOPRA le frecce orizzontali
-   - card piccole (visione d’insieme)
    - click = expand 2x con overlay
    - NO hover sulle card
    ========================= */
@@ -850,58 +850,6 @@ header{ position: relative; overflow: visible; }
 }
 
 /* =========================
-   WRAP + FRECCE VERTICALI
-   ========================= */
-
-.chi-wrap{
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto 24px;
-}
-
-.chi-arrows{
-  position:absolute;
-  left: 6px;
-  top: 0;
-  bottom: 0;
-  width: 60px;
-  color:#000;
-  pointer-events:none;
-}
-
-.chi-arrows .v{
-  position:absolute;
-  width:2px;
-  background:currentColor;
-  top: 18px;
-  bottom: 18px;
-}
-
-.chi-arrows .v.up{   left: 18px; }
-.chi-arrows .v.down{ left: 34px; }
-
-.chi-arrows .v.up::before{
-  content:"";
-  position:absolute;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  border-bottom:10px solid currentColor;
-  border-left:6px solid transparent;
-  border-right:6px solid transparent;
-}
-.chi-arrows .v.down::after{
-  content:"";
-  position:absolute;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  border-top:10px solid currentColor;
-  border-left:6px solid transparent;
-  border-right:6px solid transparent;
-}
-
-/* =========================
    BADGE (ATTO / POTENZA) - UGUALI
    - CENTRATI SOPRA le frecce orizzontali
    ========================= */
@@ -939,11 +887,77 @@ header{ position: relative; overflow: visible; }
 }
 
 /* =========================
-   LAYOUT: 3 card visibili insieme
+   WRAP + FRECCE VERTICALI
+   (FIX: le frecce verticali non arrivano al div conclusione)
+   ========================= */
+
+.chi-wrap{
+  position: relative;
+  max-width: 1600px; /* più largo per 4 card */
+  margin: 0 auto 24px;
+
+  /* NUOVO: layout a griglia
+     riga 1: frecce + cards
+     riga 2: conclusione (senza frecce) */
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+}
+
+/* FRECCE verticali: non più assolute, stanno SOLO in riga 1 */
+.chi-arrows{
+  grid-column: 1;
+  grid-row: 1;
+
+  position: relative;
+  width: 60px;
+  color:#000;
+  pointer-events:none;
+}
+
+/* linee verticali dentro la colonna frecce */
+.chi-arrows .v{
+  position:absolute;
+  width:2px;
+  background:currentColor;
+  top: 18px;
+  bottom: 18px;
+}
+
+.chi-arrows .v.up{   left: 18px; }
+.chi-arrows .v.down{ left: 34px; }
+
+.chi-arrows .v.up::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  border-bottom:10px solid currentColor;
+  border-left:6px solid transparent;
+  border-right:6px solid transparent;
+}
+.chi-arrows .v.down::after{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  border-top:10px solid currentColor;
+  border-left:6px solid transparent;
+  border-right:6px solid transparent;
+}
+
+/* =========================
+   LAYOUT: 4 card visibili insieme
    ========================= */
 
 .chi-layout{
-  padding-left: 70px;
+  grid-column: 2;
+  grid-row: 1;
+
+  padding-left: 0; /* prima era 70px per far spazio alle frecce */
   box-sizing: border-box;
 }
 
@@ -956,10 +970,21 @@ header{ position: relative; overflow: visible; }
 
 .chi-cards{
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* FIX: 4 colonne */
   gap: 12px;
   width: 100%;
   align-items: start;
+}
+
+/* =========================
+   CONCLUSIONE (ultimo div dentro .chi-wrap)
+   - sta in riga 2, colonna 2 (sotto le card, non sotto le frecce)
+   ========================= */
+
+.chi-wrap > div:last-child{
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 16px;
 }
 
 /* =========================
@@ -1173,11 +1198,16 @@ header{ position: relative; overflow: visible; }
    RESPONSIVE
    ========================= */
 
-@media (max-width: 980px){
+/* da 4 -> 2 */
+@media (max-width: 1180px){
   .chi-cards{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* mobile: una colonna, niente frecce */
 @media (max-width: 700px){
-  .chi-layout{ padding-left: 0; }
+  .chi-wrap{
+    display: block; /* semplifica tutto */
+  }
   .chi-arrows, .chi-arrows-top{ display:none; }
   .chi-cards{ grid-template-columns: 1fr; }
 
@@ -1195,4 +1225,91 @@ header{ position: relative; overflow: visible; }
 
 #poesia{
   text-align: center;
+}
+
+/* =========================
+   CHI — ESPANSIONE "IDEE CARD" (multi-select)
+   - click su una card => toggle .is-selected
+   - quando selezionata: span tutta la riga (grid), stile più “pesante”, bg grigino,
+     immagini + tipografia più grandi
+   - puoi selezionarne quante vuoi (riclicca per deselezionare)
+   ========================= */
+
+/* DISATTIVA il vecchio sistema overlay/fixed (se ancora presente) */
+.chi-overlay{ display:none !important; }
+.chi-card.is-expanded{
+  position: static !important;
+  left:auto !important; top:auto !important;
+  transform:none !important;
+  width:auto !important;
+  max-width:none !important;
+  z-index:auto !important;
+  cursor:pointer !important;
+  user-select:none !important;
+}
+.chi-close{ display:none !important; }
+
+/* transizioni più “idee-card” */
+#chi-completo .chi-card{
+  transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease, transform .18s ease, padding .22s ease;
+}
+
+/* stato selezionato: occupa tutta la riga (grid) */
+#chi-completo .chi-card.is-selected{
+  grid-column: 1 / -1;                 /* span full row */
+  text-align: center;
+  background: #ffffff;                 /* bianco -> grigino */
+  border: 3px solid rgba(0,0,0,.55);   /* bordo più pesante */
+  box-shadow: 0 10px 26px rgba(0,0,0,.14);
+  padding: 18px 18px 20px;
+}
+
+/* feedback “selezionata” */
+#chi-completo .chi-card.is-selected{
+  transform: translateY(-1px);
+}
+
+/* tipografia più grande quando espansa */
+#chi-completo .chi-card.is-selected{
+  font-size: 13px;
+}
+#chi-completo .chi-card.is-selected p{
+  font-size: 12px;
+  line-height: 1.32;
+}
+#chi-completo .chi-card.is-selected b{
+  font-size: 14px;
+}
+#chi-completo .chi-card.is-selected > .chi-pane-title{
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* immagini più grandi quando espansa */
+#chi-completo .chi-card.is-selected img{
+  height: 220px;
+  border-radius: 14px;
+}
+
+/* immagini dentro split/pane più grandi quando espansa */
+#chi-completo .chi-card.is-selected .chi-pane img{
+  height: 160px;
+}
+
+/* split con un filo più aria quando espansa */
+#chi-completo .chi-card.is-selected .chi-split{
+  border-radius: 14px;
+}
+#chi-completo .chi-card.is-selected .chi-pane{
+  padding: 14px 14px 16px;
+}
+
+/* mobile: già 1 colonna, qui solo scaling più moderato */
+@media (max-width: 700px){
+  #chi-completo .chi-card.is-selected img{ height: 180px; }
+  #chi-completo .chi-card.is-selected .chi-pane img{ height: 140px; }
+  #chi-completo .chi-card.is-selected{
+    padding: 16px;
+    transform: none;
+  }
 }
