@@ -1313,3 +1313,109 @@ header{ position: relative; overflow: visible; }
     transform: none;
   }
 }
+/* =========================================
+   CARTE NAUTICHE (indice) — mobile + iPad
+   CHIUSE: rettangolini verticali con titolo sopra immagine
+   APERTE (.expanded): tornano full-width
+   ========================================= */
+
+@media (max-width: 1024px){
+
+  /* griglia indice */
+  #lecarteindice{
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 34px;                 /* ↑ più spazio tra le card */
+    padding-bottom: 40px;      /* ↑ più aria sotto la griglia */
+    margin-bottom: 26px;       /* ↑ spazio “sotto le card” (fuori dal blocco) */
+  }
+
+  /* card chiusa = rettangolino verticale */
+  #lecarteindice .idee-card:not(.expanded){
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;      /* titolo e immagine a tutta larghezza */
+    justify-content: flex-start;
+
+    padding: 14px 14px 20px !important; /* ↑ bottom più grande */
+    border-radius: 14px;
+    text-align: center;
+
+    aspect-ratio: auto;        /* niente quadrato */
+    min-height: 0;
+    row-gap: 10px !important;  /* ↑ spazio interno tra titolo e immagine */
+  }
+
+  /* titolo sopra immagine */
+  #lecarteindice .idee-card:not(.expanded) > h3{
+    order: 1;
+    margin: 0 !important;
+    padding: 4px 6px;          /* ↑ un filo di respiro */
+    font-size: 1rem !important;
+    line-height: 1.15 !important;
+    text-align: center;
+  }
+
+  /* contenitore destro non deve “rompere” il layout */
+  #lecarteindice .idee-card:not(.expanded) .card-right{
+    order: 2;
+    margin: 0 !important;
+    width: 100%;
+    display: block !important;
+  }
+
+  /* immagine: sotto al titolo, verticale */
+  #lecarteindice .idee-card:not(.expanded) > img,
+  #lecarteindice .idee-card:not(.expanded) .card-right img{
+    order: 2;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 3;       /* ↑ rettangolo verticale “card-like” */
+    object-fit: cover !important;
+    border-radius: 12px !important;
+  }
+
+  /* contenuti nascosti quando chiusa */
+  #lecarteindice .idee-card:not(.expanded) .didascalia-img,
+  #lecarteindice .idee-card:not(.expanded) figcaption,
+  #lecarteindice .idee-card:not(.expanded) .idee-content{
+    display: none !important;
+  }
+
+  /* quando APERTA: full width */
+  #lecarteindice .idee-card.expanded{
+    grid-column: 1 / -1 !important;
+    min-height: 0;
+    text-align: left;
+  }
+}
+
+/* telefoni: 2 colonne stabili + più “aria sotto” */
+@media (max-width: 700px){
+  #lecarteindice{
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px;            /* ↑ più spazio tra card su phone */
+    padding-bottom: 32px;
+  }
+
+  #lecarteindice .idee-card:not(.expanded){
+    padding: 12px 12px 18px !important;
+    row-gap: 8px !important;
+  }
+
+  #lecarteindice .idee-card:not(.expanded) > h3{
+    font-size: 0.92rem !important;
+  }
+
+  #lecarteindice .idee-card:not(.expanded) > img,
+  #lecarteindice .idee-card:not(.expanded) .card-right img{
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* telefoni molto piccoli: 1 colonna */
+@media (max-width: 380px){
+  #lecarteindice{
+    grid-template-columns: 1fr !important;
+  }
+}
