@@ -1419,3 +1419,44 @@ header{ position: relative; overflow: visible; }
     grid-template-columns: 1fr !important;
   }
 }
+
+/* =========================================
+   FIX SPLIT FORESTA: niente tagli (testi/immagini)
+   Incolla in FONDO al CSS
+   ========================================= */
+
+#chi-completo .chi-split--foresta{
+  /* colonne “vere” che possono restringersi senza rompere */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+
+  /* se vuoi tenere i bordi arrotondati ma evitare clipping “strano”,
+     manteniamo hidden ma facciamo wrappare tutto dentro */
+  overflow: hidden;
+}
+
+/* IMPORTANTISSIMO per evitare testo tagliato in grid */
+#chi-completo .chi-split--foresta .chi-pane{
+  min-width: 0;                 /* permette al testo di andare a capo */
+}
+
+/* Titoli e paragrafi: wrap + niente overflow */
+#chi-completo .chi-split--foresta .chi-pane-title,
+#chi-completo .chi-split--foresta p{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Immagini nello split: niente altezza “rigida” che schiaccia */
+#chi-completo .chi-split--foresta .chi-pane img{
+  width: 100%;
+  height: auto !important;      /* override del tuo height:82px */
+  max-height: 180px;            /* limite “pulito” */
+  object-fit: contain;
+}
+
+/* Quando la card è selezionata/espansa: immagini più grandi ma sempre auto */
+#chi-completo .chi-card.is-selected .chi-split--foresta .chi-pane img{
+  height: auto !important;
+  max-height: 260px;
+}
